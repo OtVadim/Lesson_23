@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .tab {
+            height: 70px;
+            width: 240px;
+            background: rgb(216, 230, 252);
+            border-radius: 10px;
+            border-color: transparent;   
+        }
+
+        .active {
+            background: rgb(113, 113, 253);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" class="tab">Начать экзамен</button>
+    <div id="text" style="display: none;">терпение!!!!1</div>
+    <div id="wait" style="display: none;">ожидание!!1</div>
+    <script>
+        let btn = document.getElementById('btn');
+        let process = false
+
+        btn.onclick = function() {
+            btn.classList.add('active')
+            if (process) {
+                document.getElementById('wait').style.display = 'block';
+            }
+            process = true
+            document.getElementById('text').style.display = 'block';
+          
+            const promise = new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(Math.floor(Math.random() * 5))
+                    }, 4000)    
+                })
+                promise
+                    .then(mark => alert(`вы получили оценку ${mark}`))
+                    
+            }
+             
+    </script>
+</body>
+</html>
